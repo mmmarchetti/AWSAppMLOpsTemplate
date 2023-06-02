@@ -1,9 +1,11 @@
+.PHONY: test
+
 install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=cli --cov=mlib --cov=utilscli --cov=app test_mlib.py
+	python -m pytest -vv --cov=app test_ml_app.py
 
 format:
 	black *.py

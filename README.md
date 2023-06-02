@@ -53,6 +53,8 @@ project_name/
 |__ docker/                             - Docker files
 |    |__ base.Dockerfile                 
 |    |__ cloud.Dockerfile
+|                            
+|__ test_ml_app.py                      - Create Automated Test scripts using pytest
 |
 |__ .gitignore                          - List of files and directories to ignore in version cont
 |
