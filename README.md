@@ -4,6 +4,8 @@
 ```
 project_name/
 |
+|__ app.py                              - Flask app python file
+|
 |__ data/ 
 |    |
 |    |__ raw/                           - Raw, unprocessed data
