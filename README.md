@@ -65,4 +65,6 @@ project_name/
 |__ .env                                - Env secrets (KEYS, passwords, etc...) Obs. Listed in .gitignore
 |
 |__ Makefile                            - Make file for CI/CD
+|
+|__ .github/worflows                    - GitHub Actions for automated CI/CD in aws
 ```
