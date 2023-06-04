@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        ref: main
 
     - name: Push to EC2
       env:
@@ -23,7 +25,6 @@ jobs:
         chmod 400 key.pem
         ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@$EC2_HOST <<EOF
           cd ml_app
-          git branch --set-upstream-to=origin/main main
           git pull
           make all
         EOF
