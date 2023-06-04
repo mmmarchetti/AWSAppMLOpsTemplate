@@ -23,7 +23,7 @@ jobs:
         chmod 400 key.pem
         ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@$EC2_HOST <<EOF
           cd ml_app
-          git branch --set-upstream-to=origin/master master
+          git branch --set-upstream-to=origin/main main
           git pull
           make all
         EOF
