@@ -1,7 +1,7 @@
 from flask import Flask
 from flask.logging import create_logger
 import logging
-#
+
 
 app = Flask(__name__)
 LOG = create_logger(app)
