@@ -1,4 +1,4 @@
-# MLOps Template
+# AWS MLOps Template
 
 ### Project Structure
 ```
@@ -51,8 +51,7 @@ project_name/
 |            |__ report.pdf            
 |
 |__ docker/                             - Docker files
-|    |__ base.Dockerfile                 
-|    |__ cloud.Dockerfile
+|    |__ Dockerfile                 
 |                            
 |__ test_ml_app.py                      - Create Automated Test scripts using pytest
 |
