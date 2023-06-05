@@ -47,8 +47,3 @@ jobs:
     - name: Build and Run App
       run: |
         make build
-        make run
-        
-
-  
-    
