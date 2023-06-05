@@ -13,7 +13,7 @@ def home():
     """ "
     Endpoint to check if the app is working
     """
-    html = "<h3>Working!</h3>"
+    html = "<h3>Working</h3>"
     return html.format(format)
 
 

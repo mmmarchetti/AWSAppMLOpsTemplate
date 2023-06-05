@@ -18,5 +18,5 @@ def test_index(client):
     """Test the index route."""
     res = client.get("/")
     assert res.status_code == 200
-    expected = "<h3>Working!</h3>"
+    expected = "<h3>Working</h3>"
     assert expected in res.get_data(as_text=True)
