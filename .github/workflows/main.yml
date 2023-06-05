@@ -9,6 +9,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        make install
+    - name: Lint with pylint
+      run: |
+        make lint
+    - name: Test with pytest
+      run: |
+        make test
+
+  build-container:
+    runs-on: ubuntu-latest
+    steps:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
@@ -26,5 +43,12 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@$EC2_HOST <<EOF
           cd machine_learning_app/AWSAppMLOpsTemplate/
           git pull
-          make all
-        EOF
+
+    - name: Build and Run App
+      run: |
+        make build
+        make run
+        
+
+  
+    
