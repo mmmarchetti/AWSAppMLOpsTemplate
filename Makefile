@@ -1,11 +1,11 @@
 .PHONY: test
 
 install:
-	pip install --upgrade pip &&\
-		pip install pytest pylint pytest-cov black
+	pip3 install --upgrade pip &&\
+		pip3 install pytest pylint pytest-cov black
 
 test:
-	python -m pytest -vv --cov=app test_ml_app.py
+	python3 -m pytest -vv --cov=app test_ml_app.py
 
 format:
 	black *.py
