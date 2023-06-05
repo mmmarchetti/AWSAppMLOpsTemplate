@@ -14,9 +14,9 @@ lint:
 	pylint --disable=R,C,W1203,W0703 app.py
 
 build: 
-	docker build -t aws_ml_app -f docker/Dockerfile .
+	sudo docker build -t aws_ml_app -f docker/Dockerfile .
 
 run: 
-	docker run -p 127.0.0.1:8080:8080 aws_ml_app
+	sudo docker run -p 127.0.0.1:8080:8080 aws_ml_app
 	
 all: install test format lint build run
