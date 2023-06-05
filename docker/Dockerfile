@@ -4,7 +4,13 @@ FROM python:3.8
 WORKDIR /app
 
 # Copy source code to working directory
-COPY .. .
+COPY requirements.txt .
+COPY data/ .
+COPY notebooks/ .
+COPY reports/ .
+COPY src/ .
+COPY trained_models/ .
+COPY app.py .
 
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
