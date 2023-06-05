@@ -6,13 +6,13 @@ on:
       - main
 
 jobs:
-  build:
+  build-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v1
+    - name: Checkout code
+      uses: actions/checkout@v2
       with:
-        python-version: 3.8
+        ref: main
     - name: Install dependencies
       run: |
         make install
