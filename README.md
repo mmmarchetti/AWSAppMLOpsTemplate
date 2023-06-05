@@ -1,3 +1,4 @@
+[![Deploy to AWS EC2](https://github.com/mmmarchetti/AWSAppMLOpsTemplate/actions/workflows/main.yml/badge.svg)](https://github.com/mmmarchetti/AWSAppMLOpsTemplate/actions/workflows/main.yml)
 # AWS MLOps Template
 
 ### Project Structure
