@@ -9,6 +9,7 @@ env:
   AWS_REGION: us-east-1 # update this to your AWS region
   ECR_REPOSITORY: aws_ml_app # update this to your ECR repository name
   EB_ENVIRONMENT: Awsmlapp-env # update this to your EB environment name
+  AWS_REGISTRY_ID: 187295226786  # replace <aws_account_id> with your AWS account ID
 
 jobs:
   build-and-deploy:
@@ -44,8 +45,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          file: .docker/Dockerfile
           push: true
-          tags: ${{ env.AWS_REGISTRY_ID }}/${{ env.ECR_REPOSITORY }}:latest    
+          tags: ${{ env.AWS_REGISTRY_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest
       
       - name: Deploy to EB
         run: |
