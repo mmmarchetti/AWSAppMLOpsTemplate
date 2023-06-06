@@ -7,6 +7,12 @@
 # pem files
 *.pem
 
+# Zip files
+*.zip
+
+# json AWS ECR
+Dockerrun.aws.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
