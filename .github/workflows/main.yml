@@ -44,7 +44,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./docker
+          context: .
           file: ./docker/Dockerfile
           push: true
           tags: ${{ env.AWS_REGISTRY_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest
