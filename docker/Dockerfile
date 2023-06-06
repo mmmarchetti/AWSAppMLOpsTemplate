@@ -11,7 +11,6 @@ COPY reports/ .
 COPY src/ .
 COPY trained_models/ .
 COPY app.py .
-COPY Makefile .
 
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
