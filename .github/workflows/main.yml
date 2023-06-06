@@ -5,12 +5,6 @@ on:
     branches:
       - main
 
-env:
-  AWS_REGION: us-east-1 # update this to your AWS region
-  ECR_REPOSITORY: aws_ml_app # update this to your ECR repository name
-  EB_ENVIRONMENT: Awsmlapp-env # update this to your EB environment name
-  AWS_REGISTRY_ID: 187295226786  # replace <aws_account_id> with your AWS account ID
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -30,13 +24,14 @@ jobs:
       - name: Format with black
         run: |
           make format
-
+      
+      # important: configure github secrets for AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION_ECR, AWS_REGISTRY_ID, ECR_REPOSITORY, EB_ENVIRONMENT
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ secrets.AWS_REGION_ECR }}
       
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
@@ -47,12 +42,12 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: true
-          tags: ${{ env.AWS_REGISTRY_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest
+          tags: ${{ secrets.AWS_REGISTRY_ID }}.dkr.ecr.${{ secrets.AWS_REGION_ECR }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest
       
       - name: Deploy to EB
         run: |
           EB_APP=aws_ml_app # update this to your EB application name
-          EB_ENV=${{ env.EB_ENVIRONMENT }}
+          EB_ENV=${{ secrets.EB_ENVIRONMENT }}
           VERSION_LABEL=$(git rev-parse --short HEAD)
-          aws elasticbeanstalk create-application-version --application-name $EB_APP --version-label $VERSION_LABEL --source-bundle S3Bucket="docker-run",S3Key="Dockerrun.aws.json"
+          aws elasticbeanstalk create-application-version --application-name $EB_APP --version-label $VERSION_LABEL --source-bundle S3Bucket="docker-run",S3Key="Dockerrun.aws.json" # update to S3 bucket name
           aws elasticbeanstalk update-environment --environment-name $EB_ENV --version-label $VERSION_LABEL
