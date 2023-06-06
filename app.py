@@ -1,21 +1,19 @@
-from flask import Flask
-from flask.logging import create_logger
-import logging
+from fastapi import FastAPI
+from pydantic import BaseModel  # pylint: disable=no-name-in-module
 
 
-app = Flask(__name__)
-LOG = create_logger(app)
-LOG.setLevel(logging.INFO)
+app = FastAPI()
 
 
-@app.route("/")
-def home():
-    """ "
-    Endpoint to check if the app is working
-    """
-    html = "<h3>Working</h3>"
-    return html.format(format)
+class Item(BaseModel):
+    message: str
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)  # pragma: no cover
+@app.get("/")
+async def root():
+    return {"message": "API is Working!"}
+
+
+@app.post("/echo")
+async def echo(item: Item):
+    return {"echo": item.message}

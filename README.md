@@ -1,12 +1,12 @@
 [![Deploy to AWS EC2](https://github.com/mmmarchetti/AWSAppMLOpsTemplate/actions/workflows/main.yml/badge.svg)](https://github.com/mmmarchetti/AWSAppMLOpsTemplate/actions/workflows/main.yml)
 # AWS MLOps Template
 
-This template provides a pre-configured set of files and scripts to help you quickly create a Python Flask application, containerize it using Docker, and continuously deploy it on AWS using Elastic Beanstalk and GitHub Actions.
+This template provides a pre-configured set of files and scripts to help you quickly create a Python Machine Learning Fast API, containerize it using Docker, and continuously deploy it on AWS using Elastic Beanstalk and GitHub Actions.
 
 What's Included
 
-* Dockerfile to build Docker image for your Flask application.
-* Makefile with commands to install dependencies, lint, test, build, and run your Flask application.
+* Dockerfile to build Docker image for your Fast API.
+* Makefile with commands to install dependencies, lint, test, build, and run your Fast API.
 * GitHub Actions workflow (main.yml) for continuous integration and deployment.
 
 ## Setup and Configuration
@@ -25,6 +25,7 @@ In your GitHub repository, go to Settings -> Secrets and add the following secre
 
 AWS_ACCESS_KEY_ID: Your AWS access key ID.
 AWS_SECRET_ACCESS_KEY: Your AWS secret access key.
+
 5. Modify GitHub Actions Workflow
 In main.yml, update the following environment variables:
 

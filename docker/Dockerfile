@@ -19,6 +19,4 @@ RUN pip install --no-cache-dir --upgrade pip &&\
 
 EXPOSE 8080
 
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]

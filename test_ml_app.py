@@ -1,22 +1,27 @@
+from fastapi.testclient import TestClient
+from app import app
 import pytest
-from app import app as flask_app
+from pydantic import BaseModel  # pylint: disable=no-name-in-module
 
 
-@pytest.fixture
-def app():
-    """Create and configure a new app instance for each test."""
-    return flask_app
+class Item(BaseModel):
+    message: str
 
 
-@pytest.fixture
-def client(app):
-    """Provide a test client for the app"""
-    return app.test_client()
+client = TestClient(app)
 
 
-def test_index(client):
+def test_index():
     """Test the index route."""
-    res = client.get("/")
-    assert res.status_code == 200
-    expected = "<h3>Working</h3>"
-    assert expected in res.get_data(as_text=True)
+    response = client.get("/")
+    assert response.status_code == 200
+    expected = {"message": "API is Working!"}
+    assert response.json() == expected
+
+
+def test_echo():
+    """Test the echo route."""
+    response = client.post("/echo", json={"message": "Hello, World!"})
+    assert response.status_code == 200
+    expected = {"echo": "Hello, World!"}
+    assert response.json() == expected

@@ -2,7 +2,7 @@
 
 install:
 	pip3 install --upgrade pip &&\
-		pip3 install pytest pylint pytest-cov black flask
+		pip3 install pytest pylint pytest-cov black fastapi uvicorn pydantic
 
 test:
 	python3 -m pytest -vv --cov=app test_ml_app.py
