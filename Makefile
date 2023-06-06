@@ -5,7 +5,7 @@ install:
 		pip3 install pytest pylint pytest-cov black fastapi uvicorn pydantic httpx
 
 test:
-	python3 -m pytest -vv --cov=app test_ml_app.py
+	python3 -m pytest -vv --cov=app test_app.py
 
 format:
 	black *.py

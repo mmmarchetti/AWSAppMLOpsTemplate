@@ -1,5 +1,5 @@
 [![Deploy to AWS EC2](https://github.com/mmmarchetti/AWSAppMLOpsTemplate/actions/workflows/main.yml/badge.svg)](https://github.com/mmmarchetti/AWSAppMLOpsTemplate/actions/workflows/main.yml)
-# AWS MLOps Template
+# AWS MLOps CI/CD Template
 
 This template provides a pre-configured set of files and scripts to help you quickly create a Python Machine Learning Fast API, containerize it using Docker, and continuously deploy it on AWS using Elastic Beanstalk and GitHub Actions.
 
@@ -8,6 +8,40 @@ What's Included
 * Dockerfile to build Docker image for your Fast API.
 * Makefile with commands to install dependencies, lint, test, build, and run your Fast API.
 * GitHub Actions workflow (main.yml) for continuous integration and deployment.
+
+# Testing the Basic API
+
+This guide will walk you through testing the basic API functionality for this project. We will use the interactive API documentation provided by FastAPI.
+
+**API Base URL**: http://awsmlapp-env.eba-22wzt6z2.us-east-1.elasticbeanstalk.com/
+
+1. **Access the API Documentation**
+
+    Open your preferred web browser and navigate to the `/docs` endpoint of the base URL:
+
+    ```
+    http://awsmlapp-env.eba-22wzt6z2.us-east-1.elasticbeanstalk.com/docs
+    ```
+
+    This will open up the FastAPI's interactive Swagger UI documentation for the API.
+
+2. **Testing the Endpoints**
+
+    The interactive documentation provides a list of all available API endpoints. Here is how you can test them:
+
+    - **GET /**: Click on the GET request listed under "Default". Then, click on the "Try it out" button, followed by the "Execute" button. You should see the "API is Working!" message in the "Response body".
+
+    - **POST /echo**: Click on the POST request listed under "Default". Click on "Try it out". In the "Request body" field that appears, input a JSON object with a key-value pair where the key is `message`. For example: 
+        ```json
+        {
+            "message": "Hello, World!"
+        }
+        ```
+        Click "Execute". In the "Response body", you should see the echo of your message.
+
+Remember, this is a basic API and mainly intended to be used as a template for further development. You can add your machine learning models and build more complex API endpoints using this as a starting point.
+
+# Using this Template
 
 ## Setup and Configuration
 
@@ -40,13 +74,13 @@ Access the Application
 
 Once deployed, you can access the application by navigating to the URL of your Elastic Beanstalk environment.
 
-This template is designed to help you get started quickly with Flask, Docker, AWS ECR, and Elastic Beanstalk. However, you may need to make modifications based on the specifics of your project. Happy coding!
+This template is designed to help you get started quickly with FAST API, Docker, AWS ECR, and Elastic Beanstalk. However, you may need to make modifications based on the specifics of your project. Happy coding!
 
 ### Project Structure
 ```
 project_name/
 |
-|__ app.py                              - Flask app python file
+|__ app.py                              - FAST API app python file
 |
 |__ data/ 
 |    |
@@ -95,7 +129,7 @@ project_name/
 |__ docker/                             - Docker files
 |    |__ Dockerfile                 
 |                            
-|__ test_ml_app.py                      - Create Automated Test scripts using pytest
+|__ test_app.py                      - Create Automated Test scripts using pytest
 |
 |__ .gitignore                          - List of files and directories to ignore in version cont
 |
