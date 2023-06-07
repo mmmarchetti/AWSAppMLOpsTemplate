@@ -2,7 +2,7 @@
 
 install:
 	pip3 install --upgrade pip &&\
-		pip3 install pytest pylint pytest-cov black fastapi uvicorn pydantic httpx
+		pip3 install pytest pylint pytest-cov black fastapi uvicorn pydantic httpx scikit-learn
 
 test:
 	python3 -m pytest -vv --cov=app test_app.py
