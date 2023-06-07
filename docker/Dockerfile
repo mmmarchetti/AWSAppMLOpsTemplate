@@ -1,16 +1,19 @@
 FROM python:3.8
 
-# Working Directory
+# Set the working directory
 WORKDIR /app
 
 # Copy source code to working directory
 COPY requirements.txt .
-COPY data/ .
-COPY notebooks/ .
-COPY reports/ .
-COPY src/ .
-COPY trained_models/ .
+COPY data/ data/
+COPY notebooks/ notebooks/
+COPY reports/ reports/
+COPY src/ src/
+COPY trained_models/ trained_models
 COPY app.py .
+
+# Set the PYTHONPATH environment variable
+ENV PYTHONPATH /app
 
 # Install packages from requirements.txt
 # hadolint ignore=DL3013

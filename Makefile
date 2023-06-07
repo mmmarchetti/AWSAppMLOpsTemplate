@@ -17,6 +17,6 @@ build:
 	sudo docker build -t aws_ml_app -f docker/Dockerfile .
 
 run: 
-	sudo docker run -p 8080:8080 aws_ml_app
+	sudo docker run -p 8080:8080 -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} aws_ml_app
 	
 all: install test format lint build run

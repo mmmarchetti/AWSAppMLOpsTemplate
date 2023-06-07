@@ -10,6 +10,15 @@
 # Zip files
 *.zip
 
+# TODO
+todo
+
+# pickle files
+*.pkl
+
+# pytest cache
+.pytest_cache
+
 # json AWS ECR
 Dockerrun.aws.json
 
