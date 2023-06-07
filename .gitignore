@@ -13,6 +13,9 @@
 # TODO
 todo
 
+# mlflow runs
+mlruns
+
 # pickle files
 *.pkl
 
