@@ -6,9 +6,6 @@ import boto3
 from io import BytesIO
 
 
-mlflow.set_tracking_uri("http://ec2-52-207-53-82.compute-1.amazonaws.com")
-
-
 def load_data():
     """"
     Example Load data
