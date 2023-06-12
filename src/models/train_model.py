@@ -4,7 +4,6 @@ from sklearn.linear_model import LogisticRegression
 import joblib
 import boto3
 from io import BytesIO
-import mlflow
 
 
 mlflow.set_tracking_uri("http://ec2-52-207-53-82.compute-1.amazonaws.com")
